@@ -11,6 +11,6 @@ public class MovPersonaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Bebug.log("hola");
+        Debug.log("hola");
     }
 }
