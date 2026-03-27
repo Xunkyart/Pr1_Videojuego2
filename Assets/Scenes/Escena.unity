@@ -429,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 940168797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.29, y: -0.36, z: 0}
+  m_LocalPosition: {x: -7.98, y: -0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -496,8 +496,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0074088573, y: -0.11937967}
-  m_Size: {x: 0.4793601, y: 0.7859711}
+  m_Offset: {x: 0.06828523, y: 0.008717626}
+  m_Size: {x: 0.46771383, y: 0.8092615}
   m_Direction: 0
 --- !u!95 &940168802
 Animator:
@@ -533,6 +533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ddfeffe33cd98246b5c5719d517626b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovPersonaje
+  velocidad: 0.05
+  inicioPersonaje: {x: -3.5, y: 0, z: 0}
 --- !u!1 &1561861330
 GameObject:
   m_ObjectHideFlags: 0
