@@ -7,11 +7,18 @@ public class MovPersonaje : MonoBehaviour
 
  public float velocidad = 0.05f;
 
+ Rigidbody2D rb;
+ public float impulsoSalto = 1.0f;
+
+  bool estoySaltando = false;
+
     public Vector3 inicioPersonaje = new Vector3(-3.5f, 0, 0);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+      rb = GetComponent<Rigidbody2D>();
 
       this.transform.position = inicioPersonaje;
       
@@ -22,7 +29,7 @@ public class MovPersonaje : MonoBehaviour
 
       Vector2 moveInput =  (InputSystem.actions["Move"].ReadValue<Vector2>()); //Esto nos da [-1,1] , [0,1], ... lo que corresponda. Aquí resumimos todo el codigo de la línea en moveInput para no repetirlo todo
 
-       this.transform.Translate(moveInput.x*velocidad, moveInput.y*velocidad, 0);
+       this.transform.Translate(moveInput.x*velocidad, 0, 0);
        
        if (moveInput.x < 0)
        {
@@ -31,9 +38,19 @@ public class MovPersonaje : MonoBehaviour
           this.GetComponent<SpriteRenderer>().flipX = false;
         }
 
+     //SALTO
+
+     bool salto = InputSystem.actions["Jump"].WasPressedThisFrame();
      
+      if(salto==true)
+      {
+        Debug.Log("salto");
+        rb.AddForce(transform.up*impulsoSalto,ForceMode2D.Impulse);
+     
+      }
 
 
+     
       
 
 
