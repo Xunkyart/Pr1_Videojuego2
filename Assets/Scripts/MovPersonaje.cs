@@ -65,13 +65,11 @@ public class MovPersonaje : MonoBehaviour
       {
         this.GetComponent<SpriteRenderer>().color = Color.red;
 
-        transform.rotation = Quaternion.Euler(0,0,0);
 
       }else
       {
         this.GetComponent<SpriteRenderer>().color = Color.white;
 
-        transform.rotation = Quaternion.Euler(0,0,90);
 
       }
 
@@ -91,7 +89,9 @@ public class MovPersonaje : MonoBehaviour
         Instantiate(senyal, new Vector3(0,0,0), Quaternion.identity);
       }
 
-
+    //La cámara nos sigue
+    
+     
      
       
 
