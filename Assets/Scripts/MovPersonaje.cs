@@ -7,6 +7,8 @@ public class MovPersonaje : MonoBehaviour
 
  public float velocidad = 0.05f;
 
+ public GameObject senyal;
+
  Rigidbody2D rb;
  public float impulsoSalto = 1.0f;
    bool puedoSaltar = false;
@@ -22,6 +24,10 @@ public class MovPersonaje : MonoBehaviour
       rb = GetComponent<Rigidbody2D>();
 
       this.transform.position = inicioPersonaje;
+
+    
+      senyal = GameObject.Find("sign");
+      
       
     }
     // Update is called once per frame
@@ -41,7 +47,8 @@ public class MovPersonaje : MonoBehaviour
 
 
 
-      //Vamos a ver si estamos en el suelo para ver si podemos saltar o no
+     //SALTO
+
       RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
       Debug.DrawRay(transform.position, Vector2.down*0.5f, Color.red);
       if(hit.collider == true)
@@ -58,12 +65,15 @@ public class MovPersonaje : MonoBehaviour
       {
         this.GetComponent<SpriteRenderer>().color = Color.red;
 
+        transform.rotation = Quaternion.Euler(0,0,0);
+
       }else
       {
         this.GetComponent<SpriteRenderer>().color = Color.white;
-      }
 
-     //SALTO
+        transform.rotation = Quaternion.Euler(0,0,90);
+
+      }
 
      bool salto = InputSystem.actions["Jump"].WasPressedThisFrame();
      
@@ -71,6 +81,14 @@ public class MovPersonaje : MonoBehaviour
       {
         rb.AddForce(transform.up*impulsoSalto*5,ForceMode2D.Impulse);
 
+      }
+
+      //DISPARO
+      bool disparo = InputSystem.actions["Attack"].WasPressedThisFrame();
+
+      if(disparo)
+      {
+        Instantiate(senyal, new Vector3(0,0,0), Quaternion.identity);
       }
 
 
