@@ -9,6 +9,7 @@ public class MovPersonaje : MonoBehaviour
 
  Rigidbody2D rb;
  public float impulsoSalto = 1.0f;
+   bool puedoSaltar = false;
 
   bool estoySaltando = false;
 
@@ -38,15 +39,38 @@ public class MovPersonaje : MonoBehaviour
           this.GetComponent<SpriteRenderer>().flipX = false;
         }
 
+
+
+      //Vamos a ver si estamos en el suelo para ver si podemos saltar o no
+      RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
+      Debug.DrawRay(transform.position, Vector2.down*0.5f, Color.red);
+      if(hit.collider == true)
+      {
+        Debug.Log(hit.collider.name);
+        puedoSaltar = true;
+      
+      }else{
+        puedoSaltar = false;
+      }
+      Debug.Log(puedoSaltar);
+
+      if(puedoSaltar == true)
+      {
+        this.GetComponent<SpriteRenderer>().color = Color.red;
+
+      }else
+      {
+        this.GetComponent<SpriteRenderer>().color = Color.white;
+      }
+
      //SALTO
 
      bool salto = InputSystem.actions["Jump"].WasPressedThisFrame();
      
-      if(salto==true)
+      if(salto==true && puedoSaltar == true)
       {
-        Debug.Log("salto");
-        rb.AddForce(transform.up*impulsoSalto,ForceMode2D.Impulse);
-     
+        rb.AddForce(transform.up*impulsoSalto*5,ForceMode2D.Impulse);
+
       }
 
 
@@ -60,13 +84,7 @@ public class MovPersonaje : MonoBehaviour
 
 
 
-/*
-      Esto mueve solo al personaje 0.01 en x cada frame. Ambas límeas de código hacen lo mismo.
 
-      this.transform.position = new Vector3(this.transform.position.x + 0.01f, this.transform.position.y,0);
-
-     
-*/
 
     
     }
