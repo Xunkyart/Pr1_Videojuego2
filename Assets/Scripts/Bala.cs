@@ -7,6 +7,9 @@ public class Bala : MonoBehaviour
     bool direccionPersonaje;
 
     public GameObject disparo;
+
+    public float velocidadBala = 0.5f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,11 +27,11 @@ public class Bala : MonoBehaviour
        
         if(direccionPersonaje)
         {
-            disparo.transform.Translate(0.01f,0,0);
+            disparo.transform.Translate(velocidadBala,0,0);
         }
         else
         {
-            disparo.transform.Translate(-0.01f,0,0);
+            disparo.transform.Translate(-1*velocidadBala,0,0);
         }
         
         

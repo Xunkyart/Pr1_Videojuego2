@@ -15,8 +15,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("vidas" + vidas );
+       // Debug.Log("vidas" + vidas );
 
-        Debug.Log(puntos);
+        //Debug.Log(puntos);
     }
 }

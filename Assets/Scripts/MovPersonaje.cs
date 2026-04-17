@@ -19,7 +19,7 @@ public class MovPersonaje : MonoBehaviour
  public float impulsoSalto = 1.0f;
    bool puedoSaltar = false;
 
-  bool estoySaltando = false;
+  
 
   public bool direccionBalaDerecha = true;
 
@@ -82,7 +82,7 @@ public class MovPersonaje : MonoBehaviour
       }else{
         puedoSaltar = false;
       }
-      Debug.Log(puedoSaltar);
+     // Debug.Log(puedoSaltar);
 
       /*if(puedoSaltar == true)
       {
@@ -124,6 +124,10 @@ public class MovPersonaje : MonoBehaviour
     
     }
 
+public void Muerte()
+{ GameManager.vidas = GameManager.vidas - 1;
+
+        transform.position = respawn.transform.position;}
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -131,9 +135,7 @@ public class MovPersonaje : MonoBehaviour
 
       if(col.gameObject.name == "pinxo")
       {
-        GameManager.vidas = GameManager.vidas - 1;
-
-        transform.position = respawn.transform.position;
+       Muerte()
       }
 
       //Checkpoint
