@@ -91,7 +91,7 @@ public class Enemigo : MonoBehaviour
         {
             Debug.Log("MUERTE");
             GameManager.vidas-=1;
-            Personaje.GetComponent<MovPersonaje>().respawn;
+            Personaje.GetComponent<MovPersonaje>().Muerte();
         }
 
         if(col.gameObject.name == "Bala")

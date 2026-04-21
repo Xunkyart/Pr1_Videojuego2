@@ -13,7 +13,7 @@ public class MovPersonaje : MonoBehaviour
 
  Animator controlAnimación;
 
- GameObject respawn;
+ public static GameObject respawn;
  GameObject coin;
 
  public float impulsoSalto = 1.0f;
@@ -135,7 +135,7 @@ public void Muerte()
 
       if(col.gameObject.name == "pinxo")
       {
-       Muerte()
+       Muerte();
       }
 
       //Checkpoint
