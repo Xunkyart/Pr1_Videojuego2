@@ -43,6 +43,7 @@ public class Enemigo : MonoBehaviour
             estado="regreso";
         }
 
+        //PATRULLA
 
         if(estado == "patrulla")
         {
@@ -68,14 +69,17 @@ public class Enemigo : MonoBehaviour
                 this.GetComponent<SpriteRenderer>().flipX = false;
                 this.GetComponent<CapsuleCollider2D>().offset = new Vector2(-0.07f,-0.01515288f);
             }
-
-
         }
+
+        //ATAQUE
 
         if (estado == "ataque")
         {
             transform.position = Vector3.MoveTowards(transform.position, Personaje.transform.position, velocidadAtaque);
         }
+
+        //REGRESO
+
         if (estado == "regreso")
         {
             transform.position = Vector3.MoveTowards(transform.position, posicionInicial, velocidadPatrulla);
@@ -101,6 +105,7 @@ public class Enemigo : MonoBehaviour
         }
 
     }
+    
 
 
 }

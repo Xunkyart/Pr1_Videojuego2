@@ -1,0 +1,24 @@
+using System.Numerics;
+using UnityEngine;
+
+public class Parallax : MonoBehaviour
+{
+    public GameObject Personaje;
+    public float velocidadParallax = 0.5f;
+
+    public GameObject Camara;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Camara = GameObject.Find("Main Camera");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       float posicionX = Camara.transform.position.x;
+       float posicionY = Camara.transform.position.y;
+        transform.position = new UnityEngine.Vector3(posicionX*velocidadParallax, posicionY *velocidadParallax , 0.5f);
+    }
+}

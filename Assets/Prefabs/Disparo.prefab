@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bala
   disparo: {fileID: 1477088205762184063}
-  velocidadBala: 0.05
+  velocidadBala: 5
 --- !u!212 &2867216344656314857
 SpriteRenderer:
   serializedVersion: 2

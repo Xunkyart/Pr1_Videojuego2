@@ -16,6 +16,8 @@ public class MovPersonaje : MonoBehaviour
  public static GameObject respawn;
  GameObject coin;
 
+ public string direccionPersonaje = "quieto";
+
  public float impulsoSalto = 1.0f;
    bool puedoSaltar = false;
 
@@ -50,16 +52,26 @@ public class MovPersonaje : MonoBehaviour
 
       Vector2 moveInput =  (InputSystem.actions["Move"].ReadValue<Vector2>()); //Esto nos da [-1,1] , [0,1], ... lo que corresponda. Aquí resumimos todo el codigo de la línea en moveInput para no repetirlo todo
 
-       this.transform.Translate(moveInput.x*velocidad, 0, 0);
+       this.transform.Translate(moveInput.x*velocidad*Time.deltaTime, 0, 0);
        
        if (moveInput.x < 0)
        {
         direccionBalaDerecha = false;
         this.GetComponent<SpriteRenderer>().flipX = true;
+        direccionPersonaje = "izq";
        }else if (moveInput.x>0){
         direccionBalaDerecha = true;
           this.GetComponent<SpriteRenderer>().flipX = false;
+          direccionPersonaje = "dcha";
         }
+        else{
+          direccionPersonaje = "quieto";
+        }
+
+        if (transform.position.y < -9)
+    {
+      Muerte();
+    }
 
       //LA ANIMACIÓN CAMBIA ENTRE IDLE Y CAMINANDO
 

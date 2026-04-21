@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class Bala : MonoBehaviour
@@ -10,12 +11,20 @@ public class Bala : MonoBehaviour
 
     public float velocidadBala = 0.5f;
 
+    float nacimiento;
+
+    public float tiempoParaMorir = 1.0f;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        Personaje = GameObject.Find("Personaje");
 
         direccionPersonaje = Personaje.GetComponent<MovPersonaje>().direccionBalaDerecha;
+
+        nacimiento = Time.time;
 
     }
 
@@ -24,16 +33,19 @@ public class Bala : MonoBehaviour
     {
         transform.Rotate(0,0,0.5f);
 
-       
         if(direccionPersonaje)
         {
-            disparo.transform.Translate(velocidadBala,0,0);
+            disparo.transform.Translate(velocidadBala*Time.deltaTime,0,0);
         }
         else
         {
-            disparo.transform.Translate(-1*velocidadBala,0,0);
+            disparo.transform.Translate(-1*velocidadBala*Time.deltaTime,0,0);
         }
-        
+
+        if (Time.time >= nacimiento + tiempoParaMorir)
+        {
+            Destroy(disparo);
+        }
         
 
     }
