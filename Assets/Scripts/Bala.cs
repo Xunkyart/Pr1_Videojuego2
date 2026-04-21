@@ -46,6 +46,8 @@ public class Bala : MonoBehaviour
         {
             Destroy(disparo);
         }
+
+    
         
 
     }
