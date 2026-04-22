@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
@@ -20,12 +21,15 @@ public class MovPersonaje : MonoBehaviour
 
  public float impulsoSalto = 1.0f;
    bool puedoSaltar = false;
+  
 
   
 
   public bool direccionBalaDerecha = true;
 
     public Vector3 inicioPersonaje = new Vector3(-3.5f, 0, 0);
+
+    bool estoyAzul = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +46,8 @@ public class MovPersonaje : MonoBehaviour
       coin = GameObject.Find("Coin");
 
       transform.position = respawn.transform.position;
+
+  
       
     }
     // Update is called once per frame
@@ -139,7 +145,7 @@ public class MovPersonaje : MonoBehaviour
 public void Muerte()
 { GameManager.vidas = GameManager.vidas - 1;
 
-        transform.position = respawn.transform.position;}
+ transform.position = respawn.transform.position;}
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -159,7 +165,21 @@ public void Muerte()
 
 
     }
-    
+/*  public void CambiaColor()
+  {
+    if (estoyAzul)
+    {
+       this.GetComponent<SpriteRenderer>().color = Color.white;
+       estoyAzul=false;
+    }
+    else
+    {
+       this.GetComponent<SpriteRenderer>().color = Color.blue;
+       estoyAzul=true;
+    }*/
+
+   
+  }
    
 
 
@@ -171,4 +191,4 @@ public void Muerte()
 
 
 
-}
+
